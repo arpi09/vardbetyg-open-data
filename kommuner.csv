@@ -1,0 +1,281 @@
+slug,name,region,unit_count,scored_count,for_fa_svar_count,avg_vardbetyg,best_vardbetyg,total_answered
+ale,Ale,Västra Götaland,5,5,0,83.4,88.1,376
+alingsas,Alingsås,Västra Götaland,6,6,0,83.3,87.7,562
+alvesta,Alvesta,Kronoberg,3,3,0,82.1,86.3,190
+aneby,Aneby,Jönköping,1,1,0,85.3,85.3,105
+arboga,Arboga,Västmanland,2,2,0,84.5,85.7,206
+arjeplog,Arjeplog,Norrbotten,1,1,0,77.9,77.9,69
+arvidsjaur,Arvidsjaur,Norrbotten,1,1,0,72.4,72.4,78
+arvika,Arvika,Värmland,2,2,0,77.4,81.4,232
+askersund,Askersund,Örebro,1,1,0,66.8,66.8,101
+avesta,Avesta,Dalarna,3,3,0,77.4,79.9,303
+bengtsfors,Bengtsfors,Västra Götaland,2,2,0,79,79.8,179
+berg,Berg,Jämtland,2,2,0,81.7,88.1,159
+bjurholm,Bjurholm,Västerbotten,1,1,0,78.8,78.8,51
+bjuv,Bjuv,Skåne,3,3,0,79.3,81.8,183
+boden,Boden,Norrbotten,4,4,0,76.7,84.9,410
+bollebygd,Bollebygd,Västra Götaland,1,1,0,85.7,85.7,93
+bollnas,Bollnäs,Gävleborg,3,3,0,75.7,76.3,267
+borgholm,Borgholm,Kalmar,1,1,0,85.6,85.6,160
+borlange,Borlänge,Dalarna,4,4,0,71.9,75.6,413
+boras,Borås,Västra Götaland,16,16,0,83.7,90.5,1346
+botkyrka,Botkyrka,Stockholm,8,8,0,83.1,89.8,689
+boxholm,Boxholm,Östergötland,1,1,0,80.8,80.8,96
+bromolla,Bromölla,Skåne,2,2,0,82.4,83.4,152
+bracke,Bräcke,Jämtland,2,2,0,83.9,85.2,123
+burlov,Burlöv,Skåne,3,3,0,84.2,86.7,207
+bastad,Båstad,Skåne,3,3,0,84.2,86.2,318
+dals-ed,Dals-Ed,Västra Götaland,1,1,0,77.6,77.6,62
+danderyd,Danderyd,Stockholm,6,6,0,85,90.5,534
+degerfors,Degerfors,Örebro,1,1,0,75.3,75.3,81
+dorotea,Dorotea,Västerbotten,1,1,0,72.3,72.3,74
+eda,Eda,Värmland,1,1,0,79.6,79.6,80
+ekero,Ekerö,Stockholm,2,2,0,82,84.6,227
+eksjo,Eksjö,Jönköping,2,2,0,77.3,81,274
+emmaboda,Emmaboda,Kalmar,2,2,0,84.5,85.8,154
+enkoping,Enköping,Uppsala,7,7,0,80.4,83.8,594
+eslov,Eslöv,Skåne,4,4,0,82.6,85,451
+essunga,Essunga,Västra Götaland,1,1,0,84.5,84.5,76
+fagersta,Fagersta,Västmanland,2,2,0,79.7,81.8,175
+falkenberg,Falkenberg,Halland,7,7,0,80.8,87.1,619
+falkoping,Falköping,Västra Götaland,4,4,0,79.2,82.1,309
+falun,Falun,Dalarna,7,7,0,80.9,86.8,638
+filipstad,Filipstad,Värmland,1,1,0,72.9,72.9,77
+finspang,Finspång,Östergötland,1,1,0,79.4,79.4,197
+forshaga,Forshaga,Värmland,1,1,0,77.4,77.4,92
+fargelanda,Färgelanda,Västra Götaland,1,1,0,84.2,84.2,64
+gagnef,Gagnef,Dalarna,1,1,0,79.3,79.3,109
+gislaved,Gislaved,Jönköping,4,4,0,79.4,81.5,373
+gnosjo,Gnosjö,Jönköping,1,1,0,81.8,81.8,74
+gotland,Gotland,Gotland,6,6,0,79.7,89.1,683
+grums,Grums,Värmland,1,1,0,79.8,79.8,67
+grastorp,Grästorp,Västra Götaland,1,1,0,79.2,79.2,91
+gullspang,Gullspång,Västra Götaland,2,2,0,82.4,82.9,157
+gallivare,Gällivare,Norrbotten,2,2,0,73.5,75.4,166
+gavle,Gävle,Gävleborg,14,14,0,79.2,84.9,1253
+goteborg,Göteborg,Västra Götaland,66,65,0,81.5,90.9,5771
+gotene,Götene,Västra Götaland,1,1,0,79.2,79.2,61
+habo,Habo,Jönköping,1,1,0,81.6,81.6,79
+hagfors,Hagfors,Värmland,1,1,0,72.3,72.3,85
+hallsberg,Hallsberg,Örebro,1,1,0,74.4,74.4,87
+hallstahammar,Hallstahammar,Västmanland,1,1,0,72.8,72.8,121
+halmstad,Halmstad,Halland,13,13,0,82.7,86.6,1257
+hammaro,Hammarö,Värmland,1,1,0,71.4,71.4,94
+haninge,Haninge,Stockholm,8,8,0,78.4,84.4,685
+haparanda,Haparanda,Norrbotten,1,1,0,65.3,65.3,83
+heby,Heby,Uppsala,2,2,0,75.2,75.7,137
+hedemora,Hedemora,Dalarna,2,2,0,74,76.5,184
+helsingborg,Helsingborg,Skåne,21,21,0,79.8,87.9,1649
+herrljunga,Herrljunga,Västra Götaland,1,1,0,77.2,77.2,90
+hjo,Hjo,Västra Götaland,2,2,0,83.4,83.8,162
+hofors,Hofors,Gävleborg,1,1,0,74.1,74.1,106
+huddinge,Huddinge,Stockholm,7,7,0,82.7,84.8,757
+hudiksvall,Hudiksvall,Gävleborg,5,5,0,73.4,76.3,473
+hultsfred,Hultsfred,Kalmar,4,4,0,81.4,85.6,303
+hylte,Hylte,Halland,1,1,0,81.1,81.1,90
+habo-2,Håbo,Uppsala,3,3,0,81,84.9,210
+hallefors,Hällefors,Örebro,1,1,0,71.1,71.1,67
+harjedalen,Härjedalen,Jämtland,3,3,0,83.1,86.1,213
+harnosand,Härnösand,Västernorrland,3,3,0,73.5,76.6,260
+harryda,Härryda,Västra Götaland,6,6,0,83.6,85.8,493
+hassleholm,Hässleholm,Skåne,9,9,0,82.7,86.6,761
+hoganas,Höganäs,Skåne,3,3,0,81.4,82.7,276
+hogsby,Högsby,Kalmar,1,1,0,81.2,81.2,72
+horby,Hörby,Skåne,2,2,0,83.3,87.3,137
+hoor,Höör,Skåne,2,2,0,82.9,83.3,176
+jokkmokk,Jokkmokk,Norrbotten,1,1,0,75.9,75.9,70
+jarfalla,Järfälla,Stockholm,8,8,0,80.7,88.5,805
+jonkoping,Jönköping,Jönköping,18,18,0,83.6,89,1600
+kalix,Kalix,Norrbotten,1,1,0,66.4,66.4,90
+kalmar,Kalmar,Kalmar,12,12,0,84.9,92.4,1093
+karlsborg,Karlsborg,Västra Götaland,1,1,0,81.5,81.5,93
+karlshamn,Karlshamn,Blekinge,4,3,0,76.3,79,217
+karlskoga,Karlskoga,Örebro,4,4,0,74.6,78.3,337
+karlskrona,Karlskrona,Blekinge,10,9,0,81.3,83.9,517
+karlstad,Karlstad,Värmland,10,10,0,75.9,82.5,816
+kil,Kil,Värmland,1,1,0,73.2,73.2,99
+kinda,Kinda,Östergötland,1,1,0,80.3,80.3,101
+kiruna,Kiruna,Norrbotten,2,2,0,72.2,72.3,165
+klippan,Klippan,Skåne,3,3,0,83.1,86.6,231
+knivsta,Knivsta,Uppsala,2,2,0,79.9,82.3,194
+kramfors,Kramfors,Västernorrland,3,3,0,72.2,73.8,247
+kristianstad,Kristianstad,Skåne,10,10,0,79.1,84.5,891
+kristinehamn,Kristinehamn,Värmland,2,2,0,75.2,80.1,172
+krokom,Krokom,Jämtland,3,3,0,82.9,89.8,231
+kumla,Kumla,Örebro,1,1,0,68,68,142
+kungsbacka,Kungsbacka,Halland,11,11,0,80.3,85.7,1136
+kungsor,Kungsör,Västmanland,1,1,0,81.5,81.5,85
+kungalv,Kungälv,Västra Götaland,5,5,0,82.8,85.5,566
+kavlinge,Kävlinge,Skåne,4,4,0,85.5,88.8,386
+koping,Köping,Västmanland,4,4,0,81.7,83.8,320
+laholm,Laholm,Halland,5,5,0,82.3,85.4,470
+landskrona,Landskrona,Skåne,5,5,0,77.4,82.5,402
+laxa,Laxå,Örebro,1,1,0,72.2,72.2,79
+lekeberg,Lekeberg,Örebro,1,1,0,80.3,80.3,95
+leksand,Leksand,Dalarna,1,1,0,79.8,79.8,154
+lerum,Lerum,Västra Götaland,4,4,0,81.6,85.2,407
+lessebo,Lessebo,Kronoberg,1,1,0,83.2,83.2,64
+lidingo,Lidingö,Stockholm,5,5,0,86.5,89.2,634
+lidkoping,Lidköping,Västra Götaland,3,3,0,80.3,84.6,344
+lilla-edet,Lilla Edet,Västra Götaland,2,2,0,80.4,84.1,115
+lindesberg,Lindesberg,Örebro,3,2,0,75.6,80.7,203
+linkoping,Linköping,Östergötland,16,16,0,81.3,86,1678
+ljungby,Ljungby,Kronoberg,5,5,0,79.7,83.1,389
+ljusdal,Ljusdal,Gävleborg,3,3,0,76.3,79.7,270
+ljusnarsberg,Ljusnarsberg,Örebro,1,1,0,74.5,74.5,65
+lomma,Lomma,Skåne,4,4,0,85.7,88.5,384
+ludvika,Ludvika,Dalarna,3,3,0,77.9,78.6,369
+lulea,Luleå,Norrbotten,9,9,0,74.7,81.7,855
+lund,Lund,Skåne,16,16,0,83.2,85.9,1523
+lycksele,Lycksele,Västerbotten,2,2,0,73.4,75.8,134
+lysekil,Lysekil,Västra Götaland,2,2,0,82.6,83.8,188
+malmo,Malmö,Skåne,43,43,0,81.1,88.1,3322
+malung-salen,Malung-Sälen,Dalarna,2,2,0,78.4,81.3,170
+mala,Malå,Västerbotten,1,1,0,78.2,78.2,78
+mariestad,Mariestad,Västra Götaland,2,2,0,80.8,82.5,196
+mark,Mark,Västra Götaland,5,5,0,80.7,82.7,390
+markaryd,Markaryd,Kronoberg,3,3,0,82.1,84.9,185
+mellerud,Mellerud,Västra Götaland,1,1,0,74.3,74.3,84
+mjolby,Mjölby,Östergötland,4,4,0,84.8,88.2,392
+mora,Mora,Dalarna,1,1,0,73.1,73.1,158
+motala,Motala,Östergötland,5,5,0,79.4,87.2,479
+mullsjo,Mullsjö,Jönköping,1,1,0,80.5,80.5,76
+munkedal,Munkedal,Västra Götaland,1,1,0,81.4,81.4,92
+munkfors,Munkfors,Värmland,1,1,0,76.9,76.9,63
+molndal,Mölndal,Västra Götaland,11,11,0,82.1,88.2,893
+monsteras,Mönsterås,Kalmar,2,2,0,78.1,78.4,157
+morbylanga,Mörbylånga,Kalmar,2,2,0,82.3,84.7,212
+nacka,Nacka,Stockholm,11,11,0,85.7,91.6,1229
+nora,Nora,Örebro,1,1,0,74.9,74.9,108
+norberg,Norberg,Västmanland,1,1,0,81.4,81.4,72
+nordanstig,Nordanstig,Gävleborg,2,2,0,82.8,82.9,144
+nordmaling,Nordmaling,Västerbotten,1,1,0,75.5,75.5,69
+norrkoping,Norrköping,Östergötland,15,15,0,78.9,85,1359
+norrtalje,Norrtälje,Stockholm,7,7,0,79.1,84.2,841
+norsjo,Norsjö,Västerbotten,1,1,0,75.4,75.4,78
+nybro,Nybro,Kalmar,3,3,0,81.6,83.1,247
+nykvarn,Nykvarn,Stockholm,1,1,0,76.8,76.8,78
+nynashamn,Nynäshamn,Stockholm,3,3,0,77.6,79.1,267
+nassjo,Nässjö,Jönköping,5,5,0,80.5,87.6,384
+ockelbo,Ockelbo,Gävleborg,1,1,0,78.9,78.9,74
+olofstrom,Olofström,Blekinge,2,2,0,77.9,78.4,92
+orsa,Orsa,Dalarna,1,1,0,73.7,73.7,96
+orust,Orust,Västra Götaland,1,1,0,82.9,82.9,79
+osby,Osby,Skåne,2,2,0,80.9,83.8,195
+oskarshamn,Oskarshamn,Kalmar,4,4,0,83.2,85.2,379
+ovanaker,Ovanåker,Gävleborg,3,3,0,80.7,82.7,224
+pajala,Pajala,Norrbotten,1,1,0,70.4,70.4,70
+partille,Partille,Västra Götaland,6,6,0,83.1,89.8,503
+perstorp,Perstorp,Skåne,1,1,0,81.6,81.6,86
+pitea,Piteå,Norrbotten,4,4,0,75.4,81.5,352
+ragunda,Ragunda,Jämtland,2,2,0,79,82.2,113
+robertsfors,Robertsfors,Västerbotten,1,1,0,80,80,67
+ronneby,Ronneby,Blekinge,4,4,0,79.9,85.3,220
+rattvik,Rättvik,Dalarna,1,1,0,69.3,69.3,103
+sala,Sala,Västmanland,2,2,0,76.4,78.4,221
+salem,Salem,Stockholm,1,1,0,80.3,80.3,116
+sandviken,Sandviken,Gävleborg,4,4,0,78,80.7,346
+sigtuna,Sigtuna,Stockholm,8,8,0,82.6,86.6,604
+simrishamn,Simrishamn,Skåne,2,2,0,80.7,84.5,215
+sjobo,Sjöbo,Skåne,2,2,0,79,80.9,167
+skara,Skara,Västra Götaland,1,1,0,79,79,135
+skelleftea,Skellefteå,Västerbotten,11,11,0,71.8,78.2,849
+skinnskatteberg,Skinnskatteberg,Västmanland,1,1,0,80.2,80.2,75
+skurup,Skurup,Skåne,2,2,0,84.4,86.1,226
+skovde,Skövde,Västra Götaland,8,8,0,81.2,85.8,624
+smedjebacken,Smedjebacken,Dalarna,1,1,0,69.7,69.7,91
+solleftea,Sollefteå,Västernorrland,3,3,0,74.2,77.9,282
+sollentuna,Sollentuna,Stockholm,8,8,0,85.1,88.5,726
+solna,Solna,Stockholm,12,11,0,80.9,88.2,958
+sorsele,Sorsele,Västerbotten,1,1,0,72.7,72.7,78
+sotenas,Sotenäs,Västra Götaland,2,2,0,82.7,88.2,187
+staffanstorp,Staffanstorp,Skåne,3,3,0,85.4,86.5,296
+stenungsund,Stenungsund,Västra Götaland,4,4,0,83.3,85.2,397
+stockholm,Stockholm,Stockholm,98,97,0,83.3,90.3,9558
+storfors,Storfors,Värmland,1,1,0,82.7,82.7,83
+storuman,Storuman,Västerbotten,2,2,0,79.2,81,128
+stromstad,Strömstad,Västra Götaland,2,2,0,82.7,87.3,143
+stromsund,Strömsund,Jämtland,4,2,0,80.5,81.7,226
+sundbyberg,Sundbyberg,Stockholm,5,5,0,81.9,85.5,404
+sundsvall,Sundsvall,Västernorrland,12,12,0,72.9,81.4,1161
+sunne,Sunne,Värmland,1,1,0,79.6,79.6,89
+surahammar,Surahammar,Västmanland,1,1,0,80.7,80.7,96
+svalov,Svalöv,Skåne,1,1,0,79.5,79.5,86
+svedala,Svedala,Skåne,3,3,0,85.2,87.8,348
+svenljunga,Svenljunga,Västra Götaland,1,1,0,81.4,81.4,90
+saffle,Säffle,Värmland,2,2,0,76.8,83.7,146
+sater,Säter,Dalarna,1,1,0,77.8,77.8,104
+savsjo,Sävsjö,Jönköping,2,2,0,75.9,78,151
+soderhamn,Söderhamn,Gävleborg,5,5,0,80.7,84.9,385
+soderkoping,Söderköping,Östergötland,1,1,0,85.6,85.6,204
+sodertalje,Södertälje,Stockholm,13,12,0,84.7,89.8,1084
+solvesborg,Sölvesborg,Blekinge,2,2,0,79.1,79.2,123
+tanum,Tanum,Västra Götaland,3,3,0,83.8,85.7,244
+tibro,Tibro,Västra Götaland,2,2,0,80.7,82.9,170
+tidaholm,Tidaholm,Västra Götaland,1,1,0,82.1,82.1,88
+tierp,Tierp,Uppsala,2,2,0,77,78.9,202
+timra,Timrå,Västernorrland,2,2,0,72.4,72.6,181
+tingsryd,Tingsryd,Kronoberg,2,2,0,84.8,88.2,163
+tjorn,Tjörn,Västra Götaland,2,2,0,83,85.6,152
+tomelilla,Tomelilla,Skåne,3,3,0,84.6,87.2,287
+torsby,Torsby,Värmland,2,2,0,76.9,79.4,169
+tranemo,Tranemo,Västra Götaland,2,2,0,84.5,86.7,212
+tranas,Tranås,Jönköping,2,2,0,81.6,81.7,186
+trelleborg,Trelleborg,Skåne,5,5,0,81,81.2,487
+trollhattan,Trollhättan,Västra Götaland,7,7,0,80.4,85.4,582
+tyreso,Tyresö,Stockholm,5,5,0,84.5,88.5,454
+taby,Täby,Stockholm,8,8,0,84.7,88.2,1030
+toreboda,Töreboda,Västra Götaland,1,1,0,79.5,79.5,82
+uddevalla,Uddevalla,Västra Götaland,7,7,0,82.9,88.2,629
+ulricehamn,Ulricehamn,Västra Götaland,2,2,0,82.4,85.9,241
+umea,Umeå,Västerbotten,12,12,0,76.7,81.1,1217
+upplands-vasby,Upplands Väsby,Stockholm,5,5,0,82.2,85.7,474
+upplands-bro,Upplands-Bro,Stockholm,3,3,0,80.1,81.9,270
+uppsala,Uppsala,Uppsala,27,27,0,82,86.2,2551
+uppvidinge,Uppvidinge,Kronoberg,3,3,0,83.6,85.5,204
+vadstena,Vadstena,Östergötland,1,1,0,73.6,73.6,80
+vaggeryd,Vaggeryd,Jönköping,2,2,0,83.1,85.9,177
+valdemarsvik,Valdemarsvik,Östergötland,1,1,0,77.9,77.9,97
+vallentuna,Vallentuna,Stockholm,3,3,0,82.9,85.9,252
+vansbro,Vansbro,Dalarna,1,1,0,72.9,72.9,91
+vara,Vara,Västra Götaland,1,1,0,74.8,74.8,96
+varberg,Varberg,Halland,9,9,0,81,84.9,936
+vaxholm,Vaxholm,Stockholm,1,1,0,79.8,79.8,94
+vellinge,Vellinge,Skåne,3,3,0,83.3,84.4,460
+vetlanda,Vetlanda,Jönköping,4,4,0,82.2,84.5,358
+vilhelmina,Vilhelmina,Västerbotten,1,1,0,73.1,73.1,85
+vimmerby,Vimmerby,Kalmar,1,1,0,79.9,79.9,178
+vindeln,Vindeln,Västerbotten,1,1,0,70.7,70.7,78
+vargarda,Vårgårda,Västra Götaland,1,1,0,78,78,59
+vanersborg,Vänersborg,Västra Götaland,4,4,0,81.2,85.8,440
+vannas,Vännäs,Västerbotten,1,1,0,74.5,74.5,63
+varmdo,Värmdö,Stockholm,3,3,0,85.6,88.7,439
+varnamo,Värnamo,Jönköping,4,4,0,83.8,86.7,366
+vastervik,Västervik,Kalmar,6,6,0,81.2,85.3,553
+vasteras,Västerås,Västmanland,13,13,0,79.5,85,1597
+vaxjo,Växjö,Kronoberg,13,13,0,79.7,87.6,1025
+ydre,Ydre,Östergötland,1,1,0,79.8,79.8,78
+ystad,Ystad,Skåne,3,3,0,81.9,88.7,379
+amal,Åmål,Västra Götaland,1,1,0,74.8,74.8,76
+ange,Ånge,Västernorrland,2,2,0,78.6,79.9,143
+are,Åre,Jämtland,4,4,0,84.8,86.6,252
+arjang,Årjäng,Värmland,2,2,0,73.6,79.1,137
+asele,Åsele,Västerbotten,1,1,0,76.7,76.7,76
+astorp,Åstorp,Skåne,1,1,0,77.9,77.9,86
+atvidaberg,Åtvidaberg,Östergötland,1,1,0,80.8,80.8,105
+almhult,Älmhult,Kronoberg,2,2,0,76.3,77.8,142
+alvdalen,Älvdalen,Dalarna,2,2,0,79,79.8,134
+alvkarleby,Älvkarleby,Uppsala,1,1,0,80.4,80.4,96
+alvsbyn,Älvsbyn,Norrbotten,1,1,0,77.2,77.2,83
+angelholm,Ängelholm,Skåne,5,5,0,78.6,80.6,453
+ockero,Öckerö,Västra Götaland,2,2,0,80.8,84.9,164
+odeshog,Ödeshög,Östergötland,1,1,0,80.8,80.8,66
+orebro,Örebro,Örebro,14,14,0,74.1,82.4,1328
+orkelljunga,Örkelljunga,Skåne,2,2,0,83.6,84.3,151
+ornskoldsvik,Örnsköldsvik,Västernorrland,7,7,0,74.7,81.8,662
+ostersund,Östersund,Jämtland,9,9,0,80.6,86.3,795
+osteraker,Österåker,Stockholm,3,3,0,85.5,87.6,418
+osthammar,Östhammar,Uppsala,4,4,0,80.4,90.2,345
+ostra-goinge,Östra Göinge,Skåne,2,2,0,84.7,85,166
+overkalix,Överkalix,Norrbotten,1,1,0,79.2,79.2,76
+overtornea,Övertorneå,Norrbotten,1,1,0,82.1,82.1,102
