@@ -9,7 +9,7 @@ Vårdbetyg är ett oberoende jämförelseprojekt. Det är **inte affilierat med
 
 ## Vad datan är
 
-Två filer, uppdaterade tillsammans:
+Tre filer, uppdaterade tillsammans:
 
 - **`units.csv`** – en rad per vårdcentral: namn, kommun, region, HSA-id (när
   det är känt), det beräknade Vårdbetyget, kategoripoängen (patientupplevelse
@@ -17,6 +17,9 @@ Två filer, uppdaterade tillsammans:
   antal svarande och svarsfrekvens.
 - **`kommuner.csv`** – aggregat per kommun: antal vårdcentraler, hur många som
   har ett publicerat betyg, medel- och toppbetyg, och summa svarande.
+- **`fragor.csv`** – enkäten på frågenivå: en rad per vårdcentral och
+  redovisad fråga, med poäng, konfidensintervall, andel positiva svar och
+  antal svarande.
 
 Fullständiga kolumndefinitioner finns i
 [`data-dictionary.md`](data-dictionary.md).

@@ -59,9 +59,27 @@ En rad per kommun, aggregat över kommunens vårdcentraler.
 | `slug` | URL-identifierare, matchar vardbetyg.se/kommun/&lt;slug&gt;. | Vårdbetyg |
 | `name` | Kommunens namn. | NPE |
 | `region` | Region kommunen tillhör. | NPE |
-| `unit_count` | Antal vårdcentraler i kommunen (med enkätresultat). | NPE |
+| `unit_count` | Antal öppna vårdcentraler i kommunen (katalogen; även enheter utan enkätresultat, t.ex. Sörmland vars region inte deltog i mätningen). | Vårdbetyg |
 | `scored_count` | Antal med ett publicerat Vårdbetyg. | Vårdbetyg (härlett) |
 | `for_fa_svar_count` | Antal med för få svar för att redovisa betyg. | Vårdbetyg (härlett) |
 | `avg_vardbetyg` | Medelvärde av kommunens publicerade Vårdbetyg. | Vårdbetyg (härlett) |
 | `best_vardbetyg` | Högsta Vårdbetyg i kommunen. | Vårdbetyg (härlett) |
 | `total_answered` | Summa svarande patienter i kommunen. | NPE |
+
+## fragor.csv
+
+Frågenivån: en rad per vårdcentral och betygsatt enkätfråga (2025). Samma
+öppna data som visas fråga för fråga på enhetssidan. Fördjupning, aldrig en
+betygskomponent, så frågepoängen räknas inte in i `vardbetyg` i units.csv.
+
+| Kolumn | Beskrivning | Källa |
+|--------|-------------|-------|
+| `slug` | URL-identifierare, matchar vardbetyg.se/vardcentral/&lt;slug&gt;. | Vårdbetyg |
+| `dimension` | Dimensionen frågan hör till, matchar `dim:&lt;namn&gt;` i units.csv. | NPE |
+| `question_key` | Stabil nyckel för frågan (oförändrad mellan mätår). | Vårdbetyg |
+| `question` | Frågans fullständiga lydelse (svenska), enligt patientenkäten. | NPE |
+| `score` | Frågepoäng 0-100 (samma skala som dimensionerna). Tomt = för få svar. | NPE |
+| `confidence_interval` | Konfidensintervall (± enheter) för poängen. | NPE |
+| `positive_share` | Andel positiva svar 0-100. Tomt = för få svar. | NPE |
+| `respondents` | Antal som svarade på just den här frågan. | NPE |
+| `status` | `ok` eller `for_fa_svar` (för få svar på frågan). | NPE |
