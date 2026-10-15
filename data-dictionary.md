@@ -37,7 +37,7 @@ En kort källrad, för en artikel eller ett diagram:
 
 Referensen till datasetet, för en rapport eller en uppsats:
 
-> Vårdbetyg. (2026). Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025 (version 2025.1) [Dataset]. https://github.com/arpi09/vardbetyg-open-data
+> Vårdbetyg. (2026). Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025 (version 2025.1) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.23399626
 
 Repot har en CITATION.cff, så GitHub visar referensen i flera format under
 "Cite this repository" (https://github.com/arpi09/vardbetyg-open-data). Som BibTeX:
@@ -48,7 +48,9 @@ Repot har en CITATION.cff, så GitHub visar referensen i flera format under
   title = {Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025},
   year = {2026},
   version = {2025.1},
-  url = {https://github.com/arpi09/vardbetyg-open-data},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.23399626},
+  url = {https://doi.org/10.5281/zenodo.23399626},
   note = {Dataset, CC BY 4.0}
 }
 ```
