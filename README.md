@@ -27,11 +27,43 @@ Fem filer, uppdaterade tillsammans:
   utmärkelser som sajten visar.
 
 Fullständiga kolumndefinitioner finns i
-[`data-dictionary.md`](data-dictionary.md).
+[`data-dictionary.md`](data-dictionary.md) och, med period och saknade värden
+för varje fält, i kodboken (se nedan).
 
 Talvärden använder punkt som decimaltecken (maskinläsbart). Tomma celler
 betyder att värdet saknas, till exempel när en vårdcentral fick för få svar för
 att ett betyg ska kunna redovisas.
+
+## Kodbok
+
+[`kodbok.md`](kodbok.md) beskriver varje fält i varje fil: definition, källa,
+period och hur ett saknat värde anges. Samma innehåll finns maskinläsbart i
+[`kodbok.csv`](kodbok.csv), en rad per fält, för den som vill läsa in
+kodboken i R, Stata eller Python.
+
+## Räkna om betyget själv
+
+[`rakna-om-betyget.ipynb`](rakna-om-betyget.ipynb) hämtar Nationell
+Patientenkät och Socialstyrelsens väntetider direkt från källorna, räknar om
+Vårdbetyget med metoden på [vardbetyg.se/metodik](https://vardbetyg.se/metodik)
+och jämför med `units.csv`. Den kräver Python 3.10 eller senare och bara
+standardbiblioteket. Öppna den i Jupyter, VS Code eller Google Colab och kör
+cellerna uppifrån och ned.
+
+- **Patientupplevelsen** (70 % av betyget) räknas om helt: sammanvägningen av
+  enkätens områden, rikssnittet och krympningen mot rikssnittet.
+- **Tillgängligheten** (30 %) räknas fram ur Socialstyrelsens publicerade
+  andelar. Krympningen av den använder antalet ärenden per månad, och det
+  ingår inte i den öppna datan. Notebooken hämtar det inte, utan kontrollerar
+  att den publicerade poängen ligger mellan vårdcentralens eget värde och
+  rikssnittet.
+
+För Nationell Patientenkät 2025 återskapar notebooken alla 1 192 publicerade
+betyg inom avrundning, 1 105 av dem exakt. Resten skiljer en tiondel, eftersom
+tillgänglighetspoängen i `units.csv` är avrundad. Hela resultatet står i
+notebookens sista celler. Hittar du en avvikelse, öppna en issue i det här
+repot. Ett betyg ändras aldrig i efterhand i en släppt export: avvikelser
+rättas i nästa metodikrelease.
 
 ## Så citerar du
 
