@@ -1,0 +1,33 @@
+{
+  "title": "Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025",
+  "upload_type": "dataset",
+  "description": "<p>Öppna data om svenska vårdcentraler från Vårdbetyg (vardbetyg.se): patienternas svar i Nationell Patientenkät 2025 per vårdcentral, Socialstyrelsens väntetider i primärvården och Vårdbetyget som räknas fram ur dem. En rad per vårdcentral (units.csv), en per kommun (kommuner.csv), enkätens frågor (fragor.csv), koderna för saknade värden (fotnoter.csv) och de utmärkta vårdcentralerna (utmarkelser.csv). Kolumnerna beskrivs i data-dictionary.md och metoden på https://vardbetyg.se/metodik. Vårdbetyg är oberoende och inte knutet till 1177, SKR eller Socialstyrelsen.</p><p>Open data on Swedish health centres from Vårdbetyg (vardbetyg.se): patient survey results from the National Patient Survey 2025 per health centre, waiting times in primary care from the National Board of Health and Welfare, and the Vårdbetyg score calculated from them. The columns are described in data-dictionary.md and the method at https://vardbetyg.se/metodik.</p>",
+  "creators": [
+    {
+      "name": "Vårdbetyg"
+    }
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "language": "swe",
+  "version": "2025.1",
+  "keywords": [
+    "vårdcentraler",
+    "primärvård",
+    "Nationell Patientenkät",
+    "väntetider",
+    "patientupplevelse",
+    "öppna data",
+    "Sverige",
+    "primary care",
+    "patient experience",
+    "Sweden"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://vardbetyg.se/metodik",
+      "relation": "isDocumentedBy"
+    }
+  ],
+  "notes": "Licens CC BY 4.0. Ange källan: Vårdbetyg (vardbetyg.se). License CC BY 4.0. Credit: Vårdbetyg (vardbetyg.se)."
+}

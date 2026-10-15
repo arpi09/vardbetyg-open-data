@@ -1,0 +1,27 @@
+# Genererad av scripts/export-open-data.ts i vardbetyg-repot
+# (src/lib/domain/oppen-data/citering.ts). Redigera inte för hand.
+cff-version: 1.2.0
+message: "Använd gärna datan och citera den så här. If you use this dataset, please cite it as below."
+type: dataset
+title: "Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025"
+version: "2025.1"
+# doi: platshållare. Zenodo skapar DOI:n vid den första releasen, och
+# den läggs in här först när releasen är publicerad.
+authors:
+  - name: "Vårdbetyg"
+    website: "https://vardbetyg.se"
+license: CC-BY-4.0
+repository: "https://github.com/arpi09/vardbetyg-open-data"
+url: "https://vardbetyg.se/om-datan"
+abstract: "Öppna data om svenska vårdcentraler från Vårdbetyg (vardbetyg.se): patienternas svar i Nationell Patientenkät 2025 per vårdcentral, Socialstyrelsens väntetider i primärvården och Vårdbetyget som räknas fram ur dem. En rad per vårdcentral (units.csv), en per kommun (kommuner.csv), enkätens frågor (fragor.csv), koderna för saknade värden (fotnoter.csv) och de utmärkta vårdcentralerna (utmarkelser.csv). Kolumnerna beskrivs i data-dictionary.md och metoden på https://vardbetyg.se/metodik. Vårdbetyg är oberoende och inte knutet till 1177, SKR eller Socialstyrelsen."
+keywords:
+  - "vårdcentraler"
+  - "primärvård"
+  - "Nationell Patientenkät"
+  - "väntetider"
+  - "patientupplevelse"
+  - "öppna data"
+  - "Sverige"
+  - "primary care"
+  - "patient experience"
+  - "Sweden"
