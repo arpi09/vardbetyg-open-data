@@ -1,5 +1,7 @@
 # Vårdbetyg – öppna data
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23399625.svg)](https://doi.org/10.5281/zenodo.23399625)
+
 Öppna, maskinläsbara CSV-filer med jämförelsedata för svenska vårdcentraler
 (primärvård). Det här är samma data som driver [vardbetyg.se](https://vardbetyg.se),
 publicerad så att andra kan granska, analysera och bygga vidare på den.
@@ -76,16 +78,20 @@ En kort källrad, för en artikel eller ett diagram:
 
 Referensen till datasetet, för en rapport eller en uppsats:
 
-> Vårdbetyg. (2026). Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025 (version 2025.1) [Dataset]. https://github.com/arpi09/vardbetyg-open-data
+> Vårdbetyg. (2026). Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025 (version 2025.1) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.23399626
+
+Zenodo arkiverar varje release och ger den en DOI:
+
+- **Version 2025.1** (release `v2025.1`):
+  [10.5281/zenodo.23399626](https://doi.org/10.5281/zenodo.23399626). Citera
+  den när någon annan ska kunna hitta exakt samma filer.
+- **Alla versioner**:
+  [10.5281/zenodo.23399625](https://doi.org/10.5281/zenodo.23399625). Pekar
+  alltid på den senaste versionen.
 
 Repot har en [`CITATION.cff`](CITATION.cff), så GitHub visar referensen i
 APA och BibTeX under **Cite this repository** i högerspalten. Samma referens
 står på [vardbetyg.se/om-datan](https://vardbetyg.se/om-datan#citera).
-
-<!--
-DOI: platshållare. Zenodo skapar DOI:n vid den första releasen. Den läggs in
-här, i CITATION.cff och på sajten först när releasen är publicerad.
--->
 
 ## Källor och licens
 

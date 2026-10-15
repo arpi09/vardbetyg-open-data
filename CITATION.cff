@@ -5,8 +5,15 @@ message: "Använd gärna datan och citera den så här. If you use this dataset,
 type: dataset
 title: "Vårdbetyg: öppet dataset för svenska vårdcentraler, Nationell Patientenkät 2025"
 version: "2025.1"
-# doi: platshållare. Zenodo skapar DOI:n vid den första releasen, och
-# den läggs in här först när releasen är publicerad.
+date-released: "2026-10-15"
+doi: "10.5281/zenodo.23399626"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23399626"
+    description: "Version 2025.1"
+  - type: doi
+    value: "10.5281/zenodo.23399625"
+    description: "Alla versioner, pekar alltid på den senaste"
 authors:
   - name: "Vårdbetyg"
     website: "https://vardbetyg.se"
