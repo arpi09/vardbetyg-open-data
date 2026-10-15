@@ -12,6 +12,10 @@ Vi fyller aldrig i saknade värden med gissningar. När ett värde saknas säger
 en fotnotskod varför (se Fotnoter nedan). Koderna beskriver källan, aldrig
 vårdcentralen.
 
+Kodboken (kodbok.md, maskinläsbart kodbok.csv) beskriver varje fält med typ,
+källa, period och hur ett saknat värde anges. Notebooken
+rakna-om-betyget.ipynb räknar om betyget ur de öppna källorna.
+
 ## Proveniens
 
 - **NPE** - Nationell Patientenkät, öppen publik data per vårdcentral
