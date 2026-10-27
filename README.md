@@ -11,12 +11,21 @@ Vårdbetyg är ett oberoende jämförelseprojekt. Det är **inte affilierat med
 
 ## Vad datan är
 
-Fem filer, uppdaterade tillsammans:
+Sex filer, uppdaterade tillsammans:
 
 - **`units.csv`** – en rad per vårdcentral: namn, kommun, region, HSA-id (när
   det är känt), det beräknade Vårdbetyget, kategoripoängen (patientupplevelse
   och tillgänglighet) och varje enkätdimension med konfidensintervall, samt
-  antal svarande och svarsfrekvens.
+  antal svarande och svarsfrekvens. Sedan schemaversion 3.0 också
+  huvudman (region eller privat, ur Nationell Patientenkät), kedjan i
+  vårdcentralens namn och, där en öppen källa anger det, bolaget som driver
+  vårdcentralen med organisationsnummer.
+- **`historik.csv`** – en rad per vårdcentral och mätår i Nationell
+  Patientenkät från 2015: områdenas poäng med konfidensintervall, antal
+  svarande, huvudman och kedja det året. Enkäten byttes 2025, så kolumnen
+  `serie` säger vilken enkät en rad kommer ur. Inget Vårdbetyg bakåt i tiden.
+  På sajten heter filen
+  [vardcentraler-historik.csv](https://vardbetyg.se/data/vardcentraler-historik.csv).
 - **`kommuner.csv`** – aggregat per kommun: antal vårdcentraler, hur många som
   har ett publicerat betyg, medel- och toppbetyg, och summa svarande.
 - **`fragor.csv`** – enkäten på frågenivå: en rad per vårdcentral och
@@ -95,13 +104,17 @@ står på [vardbetyg.se/om-datan](https://vardbetyg.se/om-datan#citera).
 
 ## Källor och licens
 
-Datan bygger på två öppna, offentliga källor:
+Datan bygger på öppna, offentliga källor:
 
 - **Nationell Patientenkät** – patienternas svar om sin vårdcentral
   (upplevelsedimensioner, svarsantal, svarsfrekvens). Öppen publik data per
   vårdcentral.
 - **Socialstyrelsen, väntetider i primärvården** – tillgänglighet per
   vårdcentral.
+- **Västra Götalandsregionen, vårdval vårdcentral** (CC0) – vilket bolag som
+  driver en privat vårdcentral i regionen.
+- **Bolagsverket, värdefulla datamängder** – bolagets registrerade namn och
+  organisationsnummer.
 
 **Vårdbetyget är härlett.** Själva betyget finns inte i källorna, utan beräknas
 av sajten ur den öppna datan (en viktad sammanvägning av patientupplevelse och
@@ -162,3 +175,9 @@ någon annan ska kunna räkna om dina siffror.
   dimensionsvärde är. Ett smalt intervall betyder fler svar och en säkrare siffra.
 - Betyget är ett beslutsunderlag, inte en fullständig bild av en vårdcentral.
   Använd det tillsammans med annat du vet.
+- `huvudman`, `kedja` och `vardgivare` beskriver vem som driver
+  vårdcentralen. Patienterna skiljer sig mellan regiondrivna och privata
+  vårdcentraler, så en skillnad i snittbetyg mellan driftformerna säger inte
+  att den ena vården är bättre. Vårdbetyg jämför inte betyg mellan
+  driftformer. Ett tomt `kedja` betyder att namnet inte bär någon kedja i
+  tabellen, inte att vårdcentralen är fristående.
