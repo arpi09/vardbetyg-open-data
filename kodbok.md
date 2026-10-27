@@ -25,7 +25,7 @@ En rad per vårdcentral med minst ett redovisat enkätresultat.
 |------|-----|-------|------------|-------|--------|--------------|
 | `slug` | text |  | Vårdcentralens identifierare på sajten: vardbetyg.se/vardcentral/<slug>. Ändras inte när namnet ändras. | Vårdbetyg | Gäller tills vidare. | Alltid ifyllt. |
 | `name` | text |  | Vårdcentralens namn. Har en vårdcentral bytt namn eller driftsbolag efter mätningen står det nuvarande namnet. | Nationell Patientenkät, med Vårdbetygs register över namnbyten | Nationell Patientenkät 2025. | Alltid ifyllt. |
-| `kommun` | text |  | Kommunen vårdcentralen ligger i. | Nationell Patientenkät | Nationell Patientenkät 2025. | Alltid ifyllt. |
+| `kommun` | text |  | Kommunen vårdcentralen ligger i, med SCB:s stavning. Nyckeln är kommun_kod. | Nationell Patientenkät | Nationell Patientenkät 2025. | Alltid ifyllt. |
 | `region` | text |  | Regionen vårdcentralen ligger i. | Nationell Patientenkät | Nationell Patientenkät 2025. | Alltid ifyllt. |
 | `hsa_id` | text |  | HSA-id, den nationella identifieraren för vårdenheter. Skrivs som i patientenkäten, ibland med siffrorna 16 efter SE (SE16...) och ibland utan. | Nationell Patientenkät | Nationell Patientenkät 2025. | Tom cell när källan saknar HSA-id. |
 | `measurement_period` | text | år | Mätåret i patientenkäten som raden bygger på. | Nationell Patientenkät | Nationell Patientenkät 2025. | Alltid ifyllt. |
@@ -46,6 +46,8 @@ En rad per vårdcentral med minst ett redovisat enkätresultat.
 | `vardgivare` | text |  | Bolaget som driver vårdcentralen, med namnet det har hos Bolagsverket. | Västra Götalandsregionens öppna vårdvalsdata (CC0) eller Vårdbetygs egen kontroll, med namn och nummer ur Bolagsverkets värdefulla datamängder | Bolagsverkets bulkfil vid exporten. | Tom cell när ingen öppen källa anger bolaget, och alltid för regiondrivna vårdcentraler. Finns i dag för privata vårdcentraler i Västra Götaland och några regioner till. |
 | `vardgivare_orgnr` | text | NNNNNN-NNNN | Bolagets organisationsnummer. | Västra Götalandsregionens öppna vårdvalsdata (CC0) eller Vårdbetygs egen kontroll, med namn och nummer ur Bolagsverkets värdefulla datamängder | Bolagsverkets bulkfil vid exporten. | Tom cell när vardgivare är tom. |
 | `vardgivare_kalla` | kod |  | Var kopplingen mellan vårdcentral och bolag kommer ifrån: vgr (regionens öppna vårdvalsdata) eller vardbetyg (vår egen kontroll mot två oberoende uppgifter). | Vårdbetyg | Gäller exporten. | Tom cell när vardgivare är tom. |
+| `kommun_kod` | text | fyra siffror | SCB:s fyrsiffriga kommunkod, skriven som text med inledande nolla, till exempel 0117 för Österåker. Läs kolumnen som text; ett kalkylprogram som tolkar den som tal tappar nollan. | SCB, kommunkod och namn ur statistikdatabasen (tabell BE0101A, CC0), kopplade till kommunen på namnet | Gäller tills vidare. | Alltid ifyllt. |
+| `lan_kod` | text | två siffror | SCB:s tvåsiffriga länskod, de två första siffrorna i kommunkoden, skriven som text med inledande nolla, till exempel 01 för Stockholms län. | SCB, kommunkod och namn ur statistikdatabasen (tabell BE0101A, CC0), kopplade till kommunen på namnet | Gäller tills vidare. | Alltid ifyllt. |
 | `dim:Vård och behandling` | decimaltal | poäng 0 till 100, en decimal | Vårdcentralens poäng i området "Vård och behandling" i patientenkäten. | Nationell Patientenkät | Nationell Patientenkät 2025. | Tom cell när för få svarade på området. |
 | `dim_ci:Vård och behandling` | decimaltal | poäng, plus minus | Felmarginalen (95 % konfidensintervall, ± poäng) för området "Vård och behandling". | Nationell Patientenkät | Nationell Patientenkät 2025. | Tom cell när poängen saknas. |
 | `dim:Bemötande` | decimaltal | poäng 0 till 100, en decimal | Vårdcentralens poäng i området "Bemötande" i patientenkäten. | Nationell Patientenkät | Nationell Patientenkät 2025. | Tom cell när för få svarade på området. |
@@ -74,6 +76,8 @@ En rad per kommun.
 | `avg_vardbetyg` | decimaltal | poäng 0 till 100, en decimal | Medelvärdet av kommunens publicerade Vårdbetyg, alla vårdcentraler väger lika. | Vårdbetyg, härlett ur de öppna källorna | Nationell Patientenkät 2025. Väntetiderna: senaste månaden med ett värde per mått, inom oktober 2025 till augusti 2026. | Tom cell när ingen vårdcentral i kommunen har ett betyg. |
 | `best_vardbetyg` | decimaltal | poäng 0 till 100, en decimal | Det högsta publicerade Vårdbetyget i kommunen. | Vårdbetyg, härlett ur de öppna källorna | Nationell Patientenkät 2025. Väntetiderna: senaste månaden med ett värde per mått, inom oktober 2025 till augusti 2026. | Tom cell när ingen vårdcentral i kommunen har ett betyg. |
 | `total_answered` | heltal | antal patienter | Summan av svarande patienter i kommunens vårdcentraler. | Nationell Patientenkät | Nationell Patientenkät 2025. | Alltid ifyllt, 0 när ingen vårdcentral har enkätresultat. |
+| `kommun_kod` | text | fyra siffror | SCB:s fyrsiffriga kommunkod, skriven som text med inledande nolla, till exempel 0117 för Österåker. Läs kolumnen som text; ett kalkylprogram som tolkar den som tal tappar nollan. | SCB, kommunkod och namn ur statistikdatabasen (tabell BE0101A, CC0), kopplade till kommunen på namnet | Gäller tills vidare. | Alltid ifyllt. |
+| `lan_kod` | text | två siffror | SCB:s tvåsiffriga länskod, de två första siffrorna i kommunkoden, skriven som text med inledande nolla, till exempel 01 för Stockholms län. | SCB, kommunkod och namn ur statistikdatabasen (tabell BE0101A, CC0), kopplade till kommunen på namnet | Gäller tills vidare. | Alltid ifyllt. |
 
 ## fragor.csv
 
@@ -134,12 +138,12 @@ En rad per vårdcentral och mätår i patientenkäten, 2015 och framåt.
 
 | Fält | Typ | Enhet | Definition | Källa | Period | Saknat värde |
 |------|-----|-------|------------|-------|--------|--------------|
-| `ar` | text | ÅÅÅÅ | Mätåret i patientenkäten. | Nationell Patientenkät | 2015–2025 | Alltid ifyllt. |
+| `ar` | text | ÅÅÅÅ | Mätåret i patientenkäten. Region Sörmland deltog inte 2025, så Sörmlands vårdcentraler har rader bara till och med 2023. | Nationell Patientenkät | 2015–2025 | Alltid ifyllt. |
 | `serie` | text |  | Enkätserien raden kommer ur: "Primärvård (2015-2024)" eller "Vårdcentraler och hälsocentraler" (2025 och senare). Serierna har olika frågor, så poäng jämförs bara inom samma serie. | Nationell Patientenkät | 2015–2025 | Alltid ifyllt. |
 | `hsa_id` | text |  | HSA-id så som NPE angav det det året. Nyckeln mellan åren. | Nationell Patientenkät | 2015–2025 | Tom cell i de få fall NPE saknade HSA-id. |
 | `slug` | text |  | Vårdcentralens identifierare på sajten, samma som slug i units.csv. | Vårdbetyg | Gäller tills vidare. | Tom cell när HSA-id:t inte hör till en öppen vårdcentral i units.csv. |
 | `name` | text |  | Vårdcentralens namn det året. | Nationell Patientenkät | 2015–2025 | Alltid ifyllt. |
-| `kommun` | text |  | Kommunen i NPE:s organisationsträd det året. | Nationell Patientenkät | 2015–2025 | Alltid ifyllt. |
+| `kommun` | text |  | Kommunen i NPE:s organisationsträd det året, med SCB:s stavning. Fyra felstavningar i äldre mätår (Upplands Bro, Upplands-Väsby, Malung-sälen, Solentuna) är rättade. Nyckeln är kommun_kod. | Nationell Patientenkät | 2015–2025 | Alltid ifyllt. |
 | `region` | text |  | Regionen i NPE:s organisationsträd det året. | Nationell Patientenkät | 2015–2025 | Alltid ifyllt. |
 | `huvudman` | kod |  | Vem som drev vårdcentralen det året enligt NPE: region, privat eller okänd. Beskrivande. Patienterna skiljer sig mellan regiondrivna och privata vårdcentraler, och Vårdbetyg jämför inte betyg mellan driftformerna. | Nationell Patientenkät | 2015–2025 | okänd när NPE inte angav huvudman, vilket är vanligt 2015. |
 | `kedja` | text |  | Kedjan eller varumärket i vårdcentralens namn det året, samma tabell som i units.csv. | Vårdbetyg, härlett ur de öppna källorna | 2015–2025 | Tom cell när namnet inte bär någon kedja i tabellen. |
@@ -149,6 +153,8 @@ En rad per vårdcentral och mätår i patientenkäten, 2015 och framåt.
 | `response_rate` | decimaltal | procent, en decimal | Svarsfrekvens. | Nationell Patientenkät | 2015–2025 | Tom cell när NPE inte angav den. |
 | `nedlagd_fran` | datum | ÅÅÅÅ-MM | Första månaden vårdcentralen inte längre var en egen vårdcentral, ur Vårdbetygs register över nedlagda och sammanslagna vårdcentraler. | Vårdbetyg | Gäller tills vidare. | Tom cell när vårdcentralen inte finns i registret. |
 | `efterfoljare_hsa_id` | text |  | HSA-id för vårdcentralen verksamheten gick upp i, när den blev filial eller slogs ihop. | Vårdbetyg | Gäller tills vidare. | Tom cell när registret inte anger någon efterträdare. |
+| `kommun_kod` | text | fyra siffror | SCB:s fyrsiffriga kommunkod, skriven som text med inledande nolla, till exempel 0117 för Österåker. Läs kolumnen som text; ett kalkylprogram som tolkar den som tal tappar nollan. | SCB, kommunkod och namn ur statistikdatabasen (tabell BE0101A, CC0), kopplade till kommunen på namnet | 2015–2025 | Alltid ifyllt. |
+| `lan_kod` | text | två siffror | SCB:s tvåsiffriga länskod, de två första siffrorna i kommunkoden, skriven som text med inledande nolla, till exempel 01 för Stockholms län. | SCB, kommunkod och namn ur statistikdatabasen (tabell BE0101A, CC0), kopplade till kommunen på namnet | 2015–2025 | Alltid ifyllt. |
 | `dim:Helhetsintryck` | decimaltal | poäng 0 till 100, en decimal | Vårdcentralens poäng i området "Helhetsintryck" det året. Tomt de år serien inte hade området. | Nationell Patientenkät | 2015–2025 | Tom cell när för få svarade eller när serien saknar området. |
 | `dim_ci:Helhetsintryck` | decimaltal | poäng, plus minus | Felmarginalen (95 % konfidensintervall, ± poäng) för området "Helhetsintryck". | Nationell Patientenkät | 2015–2025 | Tom cell när poängen saknas. |
 | `dim:Emotionellt stöd` | decimaltal | poäng 0 till 100, en decimal | Vårdcentralens poäng i området "Emotionellt stöd" det året. Tomt de år serien inte hade området. | Nationell Patientenkät | 2015–2025 | Tom cell när för få svarade eller när serien saknar området. |
