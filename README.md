@@ -19,11 +19,15 @@ Sex filer, uppdaterade tillsammans:
   antal svarande och svarsfrekvens. Sedan schemaversion 3.0 också
   huvudman (region eller privat, ur Nationell Patientenkät), kedjan i
   vårdcentralens namn och, där en öppen källa anger det, bolaget som driver
-  vårdcentralen med organisationsnummer.
+  vårdcentralen med organisationsnummer. Sedan 3.1 har units.csv,
+  kommuner.csv och historik.csv också `kommun_kod` (SCB:s fyrsiffriga
+  kommunkod som text, till exempel `0117`) och `lan_kod` (tvåsiffrig).
 - **`historik.csv`** – en rad per vårdcentral och mätår i Nationell
   Patientenkät från 2015: områdenas poäng med konfidensintervall, antal
   svarande, huvudman och kedja det året. Enkäten byttes 2025, så kolumnen
   `serie` säger vilken enkät en rad kommer ur. Inget Vårdbetyg bakåt i tiden.
+  Kommunnamnen följer SCB:s stavning (290 kommuner). Region Sörmland deltog
+  inte 2025, så Sörmlands vårdcentraler har rader bara till och med 2023.
   På sajten heter filen
   [vardcentraler-historik.csv](https://vardbetyg.se/data/vardcentraler-historik.csv).
 - **`kommuner.csv`** – aggregat per kommun: antal vårdcentraler, hur många som

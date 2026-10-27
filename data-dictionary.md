@@ -7,7 +7,7 @@ inte den här filen för hand.
 Talvärden använder punkt som decimaltecken (maskinläsbart), tomma celler
 betyder "saknat värde". Mätperiod: Nationell Patientenkät 2025
 (kolumnen `measurement_period` säger radens mätår).
-Schemaversion: **3.0** (kolumnen `schema_version` i units.csv).
+Schemaversion: **3.1** (kolumnen `schema_version` i units.csv).
 
 Vi fyller aldrig i saknade värden med gissningar. När ett värde saknas säger
 en fotnotskod varför (se Fotnoter nedan). Koderna beskriver källan, aldrig
@@ -68,7 +68,7 @@ En rad per vårdcentral med minst ett redovisat enkätresultat.
 |--------|-------------|-------|
 | `slug` | URL-identifierare, matchar vardbetyg.se/vardcentral/&lt;slug&gt;. | Vårdbetyg |
 | `name` | Vårdcentralens namn. | NPE |
-| `kommun` | Kommun. | NPE |
+| `kommun` | Kommun, med SCB:s stavning. | NPE |
 | `region` | Region. | NPE |
 | `hsa_id` | HSA-id, om känt (nationell enhetsidentifierare). | NPE |
 | `measurement_period` | Mätperiod för enkäten. | NPE |
@@ -89,6 +89,8 @@ En rad per vårdcentral med minst ett redovisat enkätresultat.
 | `vardgivare` | Bolaget som driver vårdcentralen, med namnet hos Bolagsverket. Tomt = ingen öppen källa anger bolaget (alltid tomt för regiondrivna). | VGR/Vårdbetyg + Bolagsverket |
 | `vardgivare_orgnr` | Bolagets organisationsnummer (NNNNNN-NNNN). | Bolagsverket |
 | `vardgivare_kalla` | `vgr` (regionens öppna vårdvalsdata) eller `vardbetyg` (vår egen kontroll mot två oberoende uppgifter). | Vårdbetyg |
+| `kommun_kod` | SCB:s fyrsiffriga kommunkod som text med inledande nolla, t.ex. `0117`. Läs kolumnen som text. Se Om kommunkod nedan. | SCB |
+| `lan_kod` | SCB:s tvåsiffriga länskod, de två första siffrorna i kommunkoden (`01` = Stockholms län). | SCB |
 | `dim:Vård och behandling` | Dimensionspoäng 0-100 för "Vård och behandling" (Nationell Patientenkät, 2025). | NPE |
 | `dim_ci:Vård och behandling` | Konfidensintervall (± enheter) för "Vård och behandling". | NPE |
 | `dim:Bemötande` | Dimensionspoäng 0-100 för "Bemötande" (Nationell Patientenkät, 2025). | NPE |
@@ -134,6 +136,8 @@ En rad per kommun, aggregat över kommunens vårdcentraler.
 | `avg_vardbetyg` | Medelvärde av kommunens publicerade Vårdbetyg. | Vårdbetyg (härlett) |
 | `best_vardbetyg` | Högsta Vårdbetyg i kommunen. | Vårdbetyg (härlett) |
 | `total_answered` | Summa svarande patienter i kommunen. | NPE |
+| `kommun_kod` | SCB:s fyrsiffriga kommunkod som text med inledande nolla, t.ex. `0117`. Läs kolumnen som text. Se Om kommunkod nedan. | SCB |
+| `lan_kod` | SCB:s tvåsiffriga länskod, de två första siffrorna i kommunkoden (`01` = Stockholms län). | SCB |
 
 ## fragor.csv
 
@@ -201,12 +205,12 @@ en vårdcentral HSA-id utan att det står i registret följer raderna inte med.
 
 | Kolumn | Beskrivning | Källa |
 |--------|-------------|-------|
-| `ar` | Mätåret. | NPE |
+| `ar` | Mätåret. Region Sörmland deltog inte 2025, se Sörmland nedan. | NPE |
 | `serie` | Enkätserien raden kommer ur. | NPE |
 | `hsa_id` | HSA-id det året. | NPE |
 | `slug` | Samma slug som i units.csv när vårdcentralen är öppen i dag. | Vårdbetyg |
 | `name` | Namnet det året. | NPE |
-| `kommun` | Kommunen det året. | NPE |
+| `kommun` | Kommunen det året, med SCB:s stavning (se Om kommunkod nedan). | NPE |
 | `region` | Regionen det året. | NPE |
 | `huvudman` | `region`, `privat` eller `okänd` det året (2015 saknar NPE uppgiften för många enheter). | NPE |
 | `kedja` | Kedjan i namnet det året, samma tabell som units.csv. | Vårdbetyg (härlett) |
@@ -216,6 +220,8 @@ en vårdcentral HSA-id utan att det står i registret följer raderna inte med.
 | `response_rate` | Svarsfrekvens i procent. | NPE |
 | `nedlagd_fran` | Första månaden som egen vårdcentral upphörde (ÅÅÅÅ-MM). | Vårdbetyg |
 | `efterfoljare_hsa_id` | HSA-id för vårdcentralen verksamheten gick upp i. | Vårdbetyg |
+| `kommun_kod` | SCB:s fyrsiffriga kommunkod som text med inledande nolla, t.ex. `0117`. Läs kolumnen som text. Se Om kommunkod nedan. | SCB |
+| `lan_kod` | SCB:s tvåsiffriga länskod, de två första siffrorna i kommunkoden (`01` = Stockholms län). | SCB |
 | `dim:Helhetsintryck` | Poäng 0-100 för "Helhetsintryck" det året. Tomt de år serien saknar området. | NPE |
 | `dim_ci:Helhetsintryck` | Konfidensintervall (± enheter) för "Helhetsintryck". | NPE |
 | `dim:Emotionellt stöd` | Poäng 0-100 för "Emotionellt stöd" det året. Tomt de år serien saknar området. | NPE |
@@ -241,6 +247,29 @@ en vårdcentral HSA-id utan att det står i registret följer raderna inte med.
 | `dim:Information` | Poäng 0-100 för "Information" det året. Tomt de år serien saknar området. | NPE |
 | `dim_ci:Information` | Konfidensintervall (± enheter) för "Information". | NPE |
 
+### Om kommunkod och kommunnamn
+
+`kommun_kod` och `lan_kod` är SCB:s koder. De är text, inte tal: kommunerna
+i Stockholms län börjar på 0 (`0117`), och ett kalkylprogram som tolkar kolumnen
+som tal tappar nollan. Länskoden är de två första siffrorna i kommunkoden.
+Listan över kommuner är SCB:s (290 kommuner, tabell BE0101A i statistikdatabasen,
+CC0), kopplad till kommunen på namnet. Varje rad har en kod; exporten och ett test
+stoppar om ett namn inte finns i SCB:s lista.
+
+NPE har stavat fyra kommuner fel i äldre mätår: `Upplands Bro` (SCB:
+`Upplands-Bro`), `Upplands-Väsby` (`Upplands Väsby`), `Malung-sälen`
+(`Malung-Sälen`) och `Solentuna` (`Sollentuna`). I historik.csv står SCB:s
+stavning på alla rader. Före schemaversion 3.1 gav de fyra felstavningarna 294
+olika kommunnamn i filen i stället för 290.
+
+### Sörmland
+
+Region Sörmland deltog inte i Nationell Patientenkät 2025. Sörmlands
+vårdcentraler har därför rader i historik.csv bara till och med 2023 (Sörmland
+mättes 2015, 2017, 2019, 2021 och 2023) och saknas i units.csv, som tar med
+vårdcentraler med enkätresultat i den senaste mätningen. De finns med i
+kommuner.csv (`unit_count`). Det är en uppgift om källan, inget fel i filerna.
+
 ## Fotnoter
 
 Kodlistan finns också som egen fil, fotnoter.csv (vardbetyg.se/data/fotnoter.csv).
@@ -259,6 +288,7 @@ med öppna vårdcentraler med enkätresultat.
 
 ## Ändringslogg
 
+- **3.1** (2026-10-27): Kommunkod och länskod: nya kolumnerna kommun_kod (SCB:s fyrsiffriga kommunkod som text med inledande nolla, t.ex. 0117) och lan_kod (SCB:s tvåsiffriga länskod) sist bland de fasta kolumnerna i units.csv, kommuner.csv och historik.csv. Kommunnamnen i historik.csv följer nu SCB:s stavning: fyra felstavningar från äldre mätår i NPE (Upplands Bro, Upplands-Väsby, Malung-sälen, Solentuna) är rättade, så filen har 290 kommuner och inte 294. Region Sörmland deltog inte i NPE 2025, så Sörmlands vårdcentraler har rader i historik.csv bara till och med 2023.
 - **3.0** (2026-10-27): Vem som driver vårdcentralen i units.csv: huvudman (region, privat eller okänd, ur Nationell Patientenkät), kedja (varumärket i namnet) samt vardgivare, vardgivare_orgnr och vardgivare_kalla där en öppen källa anger bolaget. Ny fil historik.csv med en rad per vårdcentral och mätår 2015 och framåt. Fälten är beskrivande, Vårdbetyg jämför inte driftformer.
 - **2.0** (2026-10-14): Fotnotskoder för saknade värden (F01 till F06) i units.csv (kolumnerna vardbetyg_fotnot och tillganglighet_fotnot) och i varje enhets data.json, kodlistan som egen fil (fotnoter.csv) och kolumnen schema_version.
 - **1.0** (2026-07-10): units.csv och kommuner.csv på sajten. fragor.csv (frågenivån) lades till 2026-07-30 utan ny version.
