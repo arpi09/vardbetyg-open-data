@@ -45,6 +45,11 @@ Fullständiga kolumndefinitioner finns i
 [`data-dictionary.md`](data-dictionary.md) och, med period och saknade värden
 för varje fält, i kodboken (se nedan).
 
+Får du förskjutna kolumner i Excel eller Power Query, eller tappar
+`kommun_kod` sin inledande nolla? Se
+[Så läser du filerna](data-dictionary.md#så-läser-du-filerna), med recept för
+Power Query, Excel, R och Python.
+
 Talvärden använder punkt som decimaltecken (maskinläsbart). Tomma celler
 betyder att värdet saknas, till exempel när en vårdcentral fick för få svar för
 att ett betyg ska kunna redovisas.

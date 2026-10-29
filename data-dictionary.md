@@ -60,6 +60,103 @@ Repot har en CITATION.cff, så GitHub visar referensen i flera format under
 }
 ```
 
+## Så läser du filerna
+
+Filerna är vanlig CSV enligt RFC 4180: kommatecken mellan kolumnerna,
+rubrikrad överst, radslut CRLF. Fyra saker avgör om de läses in rätt.
+
+- **Kommatecken i namn.** Text med kommatecken står inom citationstecken, till
+  exempel `"Berga Läkarhus, Helsingborg"`. Det gäller över tusen rader i
+  historik.csv. Läs in med citeringen på. Gör du inte det delas namnet i två
+  kolumner och resten av raden hamnar ett steg fel.
+- **UTF-8 utan BOM.** Filerna har ingen byte order mark. Program som gissar
+  teckenkodning (Excel, äldre verktyg) väljer ofta fel och visar å, ä och ö
+  som skräptecken. Ange UTF-8 själv.
+- **Koderna är text.** `kommun_kod` och `lan_kod` har inledande nolla
+  (`0117`, `01`). Läs dem som text, annars blir de `117` och `1`.
+- **Punkt som decimaltecken, tom cell = saknas.** Ett program med svensk
+  inställning väntar sig decimalkomma och läser `85.2` som text eller datum.
+  Ange engelsk inställning för talen när du räknar på dem.
+
+Recepten nedan läser historik.csv från sajten, där filen heter
+`vardcentraler-historik.csv`. Byt adress för de andra filerna
+(`vardcentraler.csv` är units.csv). Kontroll efter inläsning: alla rader har
+lika många kolumner som rubrikraden, och `Berga Läkarhus, Helsingborg` ligger
+i en cell i kolumnen `name`.
+
+### Power Query (Excel och Power BI)
+
+Guiden under Hämta data kan skapa steget med `QuoteStyle.None`, som delar på
+varje kommatecken. Öppna Avancerad redigerare och ersätt frågan med:
+
+```powerquery
+let
+    Kalla = Csv.Document(
+        Web.Contents("https://vardbetyg.se/data/vardcentraler-historik.csv"),
+        [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+    ),
+    Rubriker = Table.PromoteHeaders(Kalla, [PromoteAllScalars = true]),
+    Koder = Table.TransformColumnTypes(
+        Rubriker,
+        {{"kommun_kod", type text}, {"lan_kod", type text}}
+    ),
+    Tal = Table.TransformColumnTypes(
+        Koder,
+        {{"ar", Int64.Type}, {"answered", Int64.Type}, {"response_rate", type number}},
+        "en-US"
+    )
+in
+    Tal
+```
+
+`65001` är UTF-8 och `QuoteStyle.Csv` läser citerade fält som en cell. Lägg
+fler talkolumner i sista steget på samma sätt, med kulturen `en-US`. Låt inte
+Power Query lägga till ett eget steg "Ändrad typ" före `Koder`: det gör koderna
+till heltal och nollan försvinner.
+
+### Excel utan Power Query-kod
+
+Dubbelklicka inte på filen. Excel gissar då teckenkodningen och, med svenskt
+språk, semikolon som avgränsare, så allt hamnar i en kolumn.
+
+1. Data > Från text/CSV, och välj den nedladdade filen.
+2. Filursprung: `65001: Unicode (UTF-8)`. Avgränsare: Komma.
+3. Identifiering av datatyp: `Identifiera inte datatyper`. Då behåller
+   `kommun_kod` och `lan_kod` nollan.
+4. Läs in. Vill du räkna på talen väljer du Transformera data i stället och
+   ställer in typen på talkolumnerna med Använd språkinställning > English
+   (United States), eller använder receptet ovan.
+
+### R
+
+```r
+library(readr)
+
+historik <- read_csv(
+  "https://vardbetyg.se/data/vardcentraler-historik.csv",
+  col_types = cols(kommun_kod = col_character(), lan_kod = col_character())
+)
+problems(historik)  # tom om alla rader lästes rätt
+```
+
+`read_csv` läser UTF-8, punkt som decimaltecken och citerade fält som standard.
+Kolumner du inte nämner i `col_types` gissas.
+
+### Python
+
+```python
+import pandas as pd
+
+historik = pd.read_csv(
+    "https://vardbetyg.se/data/vardcentraler-historik.csv",
+    dtype={"kommun_kod": str, "lan_kod": str},
+    encoding="utf-8",
+)
+```
+
+`pandas` läser citerade fält och punkt som decimaltecken som standard. Tomma
+celler blir `NaN`.
+
 ## units.csv
 
 En rad per vårdcentral med minst ett redovisat enkätresultat.
