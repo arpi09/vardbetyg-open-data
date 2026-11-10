@@ -7,7 +7,7 @@ inte den här filen för hand.
 Talvärden använder punkt som decimaltecken (maskinläsbart), tomma celler
 betyder "saknat värde". Mätperiod: Nationell Patientenkät 2025
 (kolumnen `measurement_period` säger radens mätår).
-Schemaversion: **3.1** (kolumnen `schema_version` i units.csv).
+Schemaversion: **3.2** (kolumnen `schema_version` i units.csv).
 
 Vi fyller aldrig i saknade värden med gissningar. När ett värde saknas säger
 en fotnotskod varför (se Fotnoter nedan). Koderna beskriver källan, aldrig
@@ -159,17 +159,23 @@ celler blir `NaN`.
 
 ## units.csv
 
-En rad per vårdcentral med minst ett redovisat enkätresultat.
+En rad per öppen vårdcentral (registret, från schemaversion 3.2). Först
+vårdcentralerna med ett Vårdbetyg, sorterade på namn, sedan vårdcentralerna
+utan betyg, också sorterade på namn. Se Rader utan betyg nedan.
+
+**Räkna medelvärden bara på rader med ett betyg** (`betyg_saknas` tom). På
+raderna utan betyg är varje poängfält tomt, aldrig 0, så ett medelvärde som
+räknar tomma celler som noll blir fel.
 
 | Kolumn | Beskrivning | Källa |
 |--------|-------------|-------|
 | `slug` | URL-identifierare, matchar vardbetyg.se/vardcentral/&lt;slug&gt;. | Vårdbetyg |
-| `name` | Vårdcentralens namn. | NPE |
-| `kommun` | Kommun, med SCB:s stavning. | NPE |
-| `region` | Region. | NPE |
-| `hsa_id` | HSA-id, om känt (nationell enhetsidentifierare). | NPE |
-| `measurement_period` | Mätperiod för enkäten. | NPE |
-| `vardbetyg` | Publicerat Vårdbetyg 0-100 (composite efter shrinkage). Tomt = för få svar. | Vårdbetyg (härlett) |
+| `name` | Vårdcentralens namn. På rader som bara Socialstyrelsen känner står Socialstyrelsens namn. | NPE / Socialstyrelsen |
+| `kommun` | Kommun, med SCB:s stavning. | NPE / Vårdbetyg |
+| `region` | Region. | NPE / Socialstyrelsen |
+| `hsa_id` | HSA-id, om känt (nationell enhetsidentifierare). | NPE / Socialstyrelsen |
+| `measurement_period` | Mätperiod för enkäten. Tomt = vårdcentralen ingick inte i den senaste mätningen. | NPE |
+| `vardbetyg` | Publicerat Vårdbetyg 0-100 (composite efter shrinkage). Tomt = inget betyg, orsaken står i `betyg_saknas`. | Vårdbetyg (härlett) |
 | `vardbetyg_raw_composite` | Patientupplevelse-composite före shrinkage. | Vårdbetyg (härlett) |
 | `vardbetyg_prior` | Nationell referens (rikssnittet) som betyget krymps mot. | Vårdbetyg (härlett) |
 | `patientupplevelse_score` | Kategoripoäng patientupplevelse (NPE-composite efter shrinkage). | Vårdbetyg (härlett) |
@@ -177,8 +183,8 @@ En rad per vårdcentral med minst ett redovisat enkätresultat.
 | `invited` | Antal patienter som fick enkäten (tillfrågade). | NPE |
 | `answered` | Antal svarande patienter (underlaget för betyget). | NPE |
 | `response_rate` | Svarsfrekvens i procent. | NPE |
-| `for_fa_svar` | `true` om enheten hade för få svar för att redovisa ett Vårdbetyg. | Vårdbetyg (härlett) |
-| `vardbetyg_fotnot` | Fotnotskod för betyget: F01 (för få svar) eller F06 (betyget bygger på 1 av 2 källor). Tomt = betyget bygger på båda källorna. | Vårdbetyg (härlett) |
+| `for_fa_svar` | `true` om enheten ingick i mätningen men hade för få svar för att redovisa ett Vårdbetyg. Enheter som inte ingick i mätningen är `false` och märks med fotnot F02. | Vårdbetyg (härlett) |
+| `vardbetyg_fotnot` | Fotnotskod för betyget: F01 (för få svar), F02 (ingick inte i mätningen) eller F06 (betyget bygger på 1 av 2 källor). Tomt = betyget bygger på båda källorna. | Vårdbetyg (härlett) |
 | `tillganglighet_fotnot` | Fotnotskod när väntetider saknas: F03 (regionen byter journalsystem enligt Socialstyrelsen) eller F04 (ingen angiven orsak). Tomt = väntetider finns. | Socialstyrelsen |
 | `schema_version` | Exportschemats version, se Ändringslogg. | Vårdbetyg |
 | `huvudman` | `region`, `privat` eller `okänd`: vem som driver vårdcentralen enligt NPE, samma mätår som raden. Se Om huvudman nedan. | NPE |
@@ -188,6 +194,7 @@ En rad per vårdcentral med minst ett redovisat enkätresultat.
 | `vardgivare_kalla` | `vgr` (regionens öppna vårdvalsdata) eller `vardbetyg` (vår egen kontroll mot två oberoende uppgifter). | Vårdbetyg |
 | `kommun_kod` | SCB:s fyrsiffriga kommunkod som text med inledande nolla, t.ex. `0117`. Läs kolumnen som text. Se Om kommunkod nedan. | SCB |
 | `lan_kod` | SCB:s tvåsiffriga länskod, de två första siffrorna i kommunkoden (`01` = Stockholms län). | SCB |
+| `betyg_saknas` | Varför vårdcentralen saknar Vårdbetyg, som en kod (se Rader utan betyg nedan). Tomt = raden har ett betyg. | Vårdbetyg (härlett) |
 | `dim:Vård och behandling` | Dimensionspoäng 0-100 för "Vård och behandling" (Nationell Patientenkät, 2025). | NPE |
 | `dim_ci:Vård och behandling` | Konfidensintervall (± enheter) för "Vård och behandling". | NPE |
 | `dim:Bemötande` | Dimensionspoäng 0-100 för "Bemötande" (Nationell Patientenkät, 2025). | NPE |
@@ -200,6 +207,34 @@ En rad per vårdcentral med minst ett redovisat enkätresultat.
 | `dim_ci:Kontinuitet` | Konfidensintervall (± enheter) för "Kontinuitet". | NPE |
 | `dim:Tillgänglighet` | Dimensionspoäng 0-100 för "Tillgänglighet" (Nationell Patientenkät, 2025). | NPE |
 | `dim_ci:Tillgänglighet` | Konfidensintervall (± enheter) för "Tillgänglighet". | NPE |
+
+### Rader utan betyg
+
+Från schemaversion 3.2 är units.csv hela registret över öppna vårdcentraler.
+Vårdcentralerna utan Vårdbetyg står sist i filen. Alla poängfält är tomma
+(`vardbetyg`, de härledda poängen, kategoripoängen och områdena), aldrig 0.
+Kolumnen `betyg_saknas` säger varför:
+
+| Kod | Betydelse |
+|-----|-----------|
+| `for_fa_svar` | Vårdcentralen ingick i den senaste mätningen, men för få patienter svarade för att ett betyg ska kunna räknas. |
+| `regionen_deltog_inte` | Regionen deltog inte i den senaste mätningen i Nationell Patientenkät (Region Sörmland 2025). |
+| `inte_i_urvalet` | Regionen deltog, men vårdcentralen fanns inte i mätningens urval. Den kan vara nyöppnad eller ha legat utanför urvalet av andra skäl; källorna säger inte vilket. |
+
+En vårdcentral får en rad bara när en gratis öppen källa känner den:
+Nationell Patientenkät något år från 2015 (namn, kommun, region och HSA-id
+ur enkäten) eller Socialstyrelsens lista över vårdcentraler i
+väntetidsstatistiken (namn och HSA-id som Socialstyrelsen skriver dem).
+Socialstyrelsens lista har ingen kommun, så för de raderna har Vårdbetyg
+angett kommunen efter mottagningens adress i vår egen katalog (ägarbeslut
+2026-10-29). Vårdcentraler som bara finns i register utan öppen licens får
+ingen rad. `unit_count` i kommuner.csv räknar samma vårdcentraler som
+units.csv, så summan över kommunerna är lika med antalet rader i units.csv.
+
+`measurement_period` är tom när vårdcentralen inte ingick i den senaste
+mätningen, och `huvudman` är då `okänd`: NPE har ingen uppgift för raden.
+Tidigare års uppgifter står i historik.csv. `tillganglighet_fotnot` säger
+som på andra rader om Socialstyrelsen redovisar väntetider för vårdcentralen.
 
 ### Om huvudman, kedja och vårdgivare
 
@@ -227,9 +262,9 @@ En rad per kommun, aggregat över kommunens vårdcentraler.
 | `slug` | URL-identifierare, matchar vardbetyg.se/kommun/&lt;slug&gt;. | Vårdbetyg |
 | `name` | Kommunens namn. | NPE |
 | `region` | Region kommunen tillhör. | NPE |
-| `unit_count` | Antal öppna vårdcentraler i kommunen (katalogen; även enheter utan enkätresultat, t.ex. Sörmland vars region inte deltog i mätningen). | Vårdbetyg |
+| `unit_count` | Antal öppna vårdcentraler i kommunen, samma vårdcentraler som har en rad i units.csv (även de utan betyg, t.ex. Sörmland vars region inte deltog i mätningen). Summan över kommunerna är antalet rader i units.csv. | Vårdbetyg |
 | `scored_count` | Antal med ett publicerat Vårdbetyg. | Vårdbetyg (härlett) |
-| `for_fa_svar_count` | Antal med för få svar för att redovisa betyg. | Vårdbetyg (härlett) |
+| `for_fa_svar_count` | Antal bland enheter som ingick i mätningen med för få svar för att redovisa betyg. Enheter som inte ingick i mätningen räknas inte (fotnot F02). | Vårdbetyg (härlett) |
 | `avg_vardbetyg` | Medelvärde av kommunens publicerade Vårdbetyg. | Vårdbetyg (härlett) |
 | `best_vardbetyg` | Högsta Vårdbetyg i kommunen. | Vårdbetyg (härlett) |
 | `total_answered` | Summa svarande patienter i kommunen. | NPE |
@@ -363,16 +398,67 @@ olika kommunnamn i filen i stället för 290.
 
 Region Sörmland deltog inte i Nationell Patientenkät 2025. Sörmlands
 vårdcentraler har därför rader i historik.csv bara till och med 2023 (Sörmland
-mättes 2015, 2017, 2019, 2021 och 2023) och saknas i units.csv, som tar med
-vårdcentraler med enkätresultat i den senaste mätningen. De finns med i
+mättes 2015, 2017, 2019, 2021 och 2023). I units.csv står de sist, utan betyg
+och med `betyg_saknas` = `regionen_deltog_inte`. De finns med i
 kommuner.csv (`unit_count`). Det är en uppgift om källan, inget fel i filerna.
+
+## vantetider-kommun.csv
+
+Vårdgarantin månad för månad: hur stor andel av patienterna som fick en
+medicinsk bedömning inom tre dagar, och hur många av vårdcentralerna som gav
+minst 90 av 100 patienter en bedömning så snabbt. En rad per område och månad,
+för hela landet, varje län och varje kommun, från juli 2025 till den senaste
+månaden Vårdbetyg har läst in. Sajtens adress:
+vardbetyg.se/data/vantetider-kommun.csv.
+
+Talen är desamma som i rutan om vårdgarantin på kommunsidorna och på
+vardbetyg.se/vantetider. Filen namnger ingen vårdcentral och har inget antal
+bedömningar.
+
+Källa: Socialstyrelsen, väntetider i primärvården, bearbetad av Vårdbetyg (vardbetyg.se). Licens CC BY 4.0 för vår bearbetning.
+
+**Hur talen räknas.** En vårdcentral klarade en månad när minst 90 av 100
+patienter fick en medicinsk bedömning inom tre dagar. Det är Vårdbetygs
+riktvärde för en månad, inte lagens gräns: lagen gäller varje patient. En
+vårdcentral räknas i "X av Y" bara när den gjorde minst 70 bedömningar
+den månaden, eftersom några få sena bedömningar annars avgör hela månaden.
+Andelen är vägd efter antalet bedömningar, så en stor vårdcentral väger mer än
+en liten, och i den räknas alla vårdcentraler med siffror för månaden.
+Socialstyrelsens siffror är preliminära, och regioner som byter journalsystem
+kan sakna siffror en period.
+
+**Tomma celler.** En kommun där färre än tre vårdcentraler räknas får ingen
+kommunsiffra, samma regel som rutan på kommunsidan. Då är
+`andel_inom_3_dagar`, `antal_klarade` och `antal_med_underlag` tomma och
+`kommentar` säger varför; länets och landets siffror står på sina egna rader.
+Ett län där ingen vårdcentral har siffror för en månad har tomma siffror den
+månaden. Ett tomt värde är aldrig noll.
+
+**Vårdcentralerna** i `antal_vardcentraler` är dagens öppna vårdcentraler i
+området, med och utan siffror, samma som rutan räknar med. En nedlagd
+vårdcentral räknas inte någon månad, och en som öppnade senare saknar siffror
+för månaderna innan.
+
+| Kolumn | Beskrivning | Källa |
+|--------|-------------|-------|
+| `niva` | `riket`, `lan` eller `kommun`. | Vårdbetyg |
+| `namn` | `Sverige`, länets namn som på vardbetyg.se/vantetider, eller kommunens namn med SCB:s stavning. | Socialstyrelsen, SCB |
+| `kommun_kod` | SCB:s fyrsiffriga kommunkod som text med inledande nolla, t.ex. `0117`. Tom för län och hela landet. | SCB |
+| `lan_kod` | SCB:s tvåsiffriga länskod som text, t.ex. `01`. Tom för hela landet. | SCB |
+| `manad` | Månaden, ÅÅÅÅ-MM. | Socialstyrelsen |
+| `andel_inom_3_dagar` | Procent med en decimal av patienterna som fick en medicinsk bedömning inom tre dagar, vägd efter antalet bedömningar. 99,95 skrivs 99.9: 100 bara när alla fick det. | Vårdbetyg (härlett) |
+| `antal_klarade` | X i "X av Y": vårdcentraler som gav minst 90 av 100 patienter en bedömning inom tre dagar. | Vårdbetyg (härlett) |
+| `antal_med_underlag` | Y i "X av Y": vårdcentraler med siffror för månaden och minst 70 bedömningar. | Vårdbetyg (härlett) |
+| `antal_vardcentraler` | Vårdcentraler i området som filen räknar med, med och utan siffror för månaden. | Vårdbetyg |
+| `kommentar` | Varför en siffra är tom: `för få vårdcentraler för en kommunsiffra`, `för få vårdcentraler för antalet som klarade` eller `inga siffror för månaden`. Tom när siffrorna finns. | Vårdbetyg |
 
 ## Fotnoter
 
 Kodlistan finns också som egen fil, fotnoter.csv (vardbetyg.se/data/fotnoter.csv).
 En kod byter aldrig betydelse; en ny orsak får en ny kod och en ny schemaversion.
-F02 och F05 förekommer i enheternas data.json men inte i units.csv, som bara tar
-med öppna vårdcentraler med enkätresultat.
+F05 förekommer i enheternas data.json men inte i units.csv, som bara tar med
+öppna vårdcentraler. F02 står på units.csv:s rader utan betyg som inte ingick i
+mätningen.
 
 | Kod | Etikett | Betydelse | Källa |
 |-----|---------|-----------|-------|
@@ -385,7 +471,14 @@ med öppna vårdcentraler med enkätresultat.
 
 ## Ändringslogg
 
+- **3.2** (2026-11-10): units.csv är nu hela registret över öppna vårdcentraler, också de utan Vårdbetyg: Sörmlands vårdcentraler (regionen deltog inte i NPE 2025), vårdcentraler som fick för få svar och vårdcentraler som inte fanns i mätningens urval. De nya raderna står sist, med tomma poängfält (aldrig 0) och en kod i nya kolumnen betyg_saknas (for_fa_svar, regionen_deltog_inte eller inte_i_urvalet), sist bland de fasta kolumnerna. En vårdcentral får en rad bara när en öppen källa känner den: Nationell Patientenkät något år sedan 2015 eller Socialstyrelsens lista över vårdcentraler i väntetidsstatistiken. De tidigare raderna är oförändrade. Räkna medelvärden bara på rader med ett betyg. unit_count i kommuner.csv räknar nu samma vårdcentraler som units.csv, så summan över kommunerna är antalet rader i units.csv (fyra kommuner i Jönköpings län får ett lägre tal). I historik.csv har vårdcentralerna som nu finns i units.csv fått sin slug.
 - **3.1** (2026-10-27): Kommunkod och länskod: nya kolumnerna kommun_kod (SCB:s fyrsiffriga kommunkod som text med inledande nolla, t.ex. 0117) och lan_kod (SCB:s tvåsiffriga länskod) sist bland de fasta kolumnerna i units.csv, kommuner.csv och historik.csv. Kommunnamnen i historik.csv följer nu SCB:s stavning: fyra felstavningar från äldre mätår i NPE (Upplands Bro, Upplands-Väsby, Malung-sälen, Solentuna) är rättade, så filen har 290 kommuner och inte 294. Region Sörmland deltog inte i NPE 2025, så Sörmlands vårdcentraler har rader i historik.csv bara till och med 2023.
 - **3.0** (2026-10-27): Vem som driver vårdcentralen i units.csv: huvudman (region, privat eller okänd, ur Nationell Patientenkät), kedja (varumärket i namnet) samt vardgivare, vardgivare_orgnr och vardgivare_kalla där en öppen källa anger bolaget. Ny fil historik.csv med en rad per vårdcentral och mätår 2015 och framåt. Fälten är beskrivande, Vårdbetyg jämför inte driftformer.
 - **2.0** (2026-10-14): Fotnotskoder för saknade värden (F01 till F06) i units.csv (kolumnerna vardbetyg_fotnot och tillganglighet_fotnot) och i varje enhets data.json, kodlistan som egen fil (fotnoter.csv) och kolumnen schema_version.
 - **1.0** (2026-07-10): units.csv och kommuner.csv på sajten. fragor.csv (frågenivån) lades till 2026-07-30 utan ny version.
+
+### Ändringar i innehållet utan ny schemaversion
+
+Kolumner och koder är desamma, men ett fält räknar annorlunda. Siffror från före datumet är inte direkt jämförbara.
+
+- **2026-11-03**: for_fa_svar och for_fa_svar_count räknar nu bara vårdcentraler som ingick i Nationell Patientenkät men hade för få svar för ett betyg. Vårdcentraler som inte fanns med i mätningen räknas inte längre dit, eftersom de inte har fått för få svar, de har inte tillfrågats. De märks i stället med fotnot F02 i enhetens data.json. Det gör att summorna för for_fa_svar_count i kommuner.csv kan skilja sig från tidigare filer. Inga kolumner eller koder har ändrats.

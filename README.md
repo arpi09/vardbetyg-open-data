@@ -11,7 +11,7 @@ Vårdbetyg är ett oberoende jämförelseprojekt. Det är **inte affilierat med
 
 ## Vad datan är
 
-Sex filer, uppdaterade tillsammans:
+Sju filer, uppdaterade tillsammans:
 
 - **`units.csv`** – en rad per vårdcentral: namn, kommun, region, HSA-id (när
   det är känt), det beräknade Vårdbetyget, kategoripoängen (patientupplevelse
@@ -22,6 +22,9 @@ Sex filer, uppdaterade tillsammans:
   vårdcentralen med organisationsnummer. Sedan 3.1 har units.csv,
   kommuner.csv och historik.csv också `kommun_kod` (SCB:s fyrsiffriga
   kommunkod som text, till exempel `0117`) och `lan_kod` (tvåsiffrig).
+  Sedan 3.2 har filen alla öppna vårdcentraler, också de som saknar betyg.
+  De står sist med tomma poängfält, och kolumnen `betyg_saknas` säger varför.
+  Räkna medelvärden bara på rader med betyg.
 - **`historik.csv`** – en rad per vårdcentral och mätår i Nationell
   Patientenkät från 2015: områdenas poäng med konfidensintervall, antal
   svarande, huvudman och kedja det året. Enkäten byttes 2025, så kolumnen
@@ -40,6 +43,13 @@ Sex filer, uppdaterade tillsammans:
 - **`utmarkelser.csv`** – de utmärkta vårdcentralerna: en rad per utmärkelse
   (Topp 10 % i Sverige, Topprankad i kommunen och Årets klättrare), samma
   utmärkelser som sajten visar.
+- **`vantetider-kommun.csv`** – vårdgarantin månad för månad sedan juli 2025,
+  per kommun, län och för hela landet: andelen som fick en medicinsk bedömning
+  inom tre dagar (viktad på bedömningarna) och hur många av vårdcentralerna som
+  gav minst 90 av 100 patienter en bedömning inom tre dagar. Inga rader per
+  vårdcentral. Samma siffror som på kommunsidorna, ur Socialstyrelsens
+  väntetidsstatistik. På sajten heter filen
+  [vantetider-kommun.csv](https://vardbetyg.se/data/vantetider-kommun.csv).
 
 Fullständiga kolumndefinitioner finns i
 [`data-dictionary.md`](data-dictionary.md) och, med period och saknade värden
